@@ -11,9 +11,9 @@ h1 {
   text-align: center;
 }
 button {
-  margin-right: auto;
-  margin-left: auto;
+  margin: auto;
 }
+
 #game {
   margin-right: auto;
   margin-left: auto;
@@ -21,6 +21,8 @@ button {
   height: 300px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 #game div {
   border: 1px solid black;
@@ -28,6 +30,15 @@ button {
   height: 100px;
   margin: 20px;
 
+}
+#details {
+  display: inline-flex;
+  width: 100%;
+  border: 2px red solid;
+  justify-content: space-between;
+}
+#details > span {
+  border: 2px green solid;
 }
 
 .red {

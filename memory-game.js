@@ -40,6 +40,8 @@ function shuffle(items) {
 
 let cardCount = 0;
 let card1 = null;
+let score = 0;
+
 
 
 function createCards(colors) {
@@ -72,10 +74,10 @@ function flipCard(card) {
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
-  console.log('unflip');
   card1 = null;
   if(!match){ //if matchCards() hasn't made match true then cards will flip over.
     card.target.style.backgroundColor='black';
+    console.log('unflip');
   }
 }
 
@@ -97,15 +99,18 @@ function handleCardClick(evt) {
     setTimeout(function(){
       unFlipCard(evt)
       cardCount--;
-      console.log("cardCount unFlip "+cardCount);
-      }, 2000);
+      }, FOUND_MATCH_WAIT_MSECS);
   }
 }
 
 function matchCards(existingCard, newCard){
+  const scoreSpan = document.getElementById("score");
   if(existingCard.target.className === newCard.target.className && existingCard.id != newCard.target.id){
     console.log('match')
     match = true;
+    score++;
+    scoreSpan.innerText = '';
+    scoreSpan.innerText = score;
   }
 }
 
@@ -115,10 +120,6 @@ resetBtn.addEventListener('click', function(e){
   debugger
   const divs = board.children;
   debugger
-  // for(let i=0; i<10; i++){
-  //   debugger
-  //   board.removeChild();
-  // }
   while (board.hasChildNodes()){
     board.removeChild(board.firstChild);
   }
@@ -126,3 +127,20 @@ resetBtn.addEventListener('click', function(e){
   let cards = shuffle(COLORS)
   createCards(cards);
 })
+
+//** timer */
+
+const time = document.getElementById('time')
+let timer = 0;
+setInterval(increaseTimer, 1000)
+function increaseTimer(){
+  if(score < colors.length/2){
+    timer++;
+    time.innerText = timer;
+  }
+
+
+}
+
+
+
