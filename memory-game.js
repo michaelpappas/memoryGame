@@ -87,24 +87,25 @@ let match = false;
 function handleCardClick(evt) {
   match = false
   if(cardCount == 0){
-    console.log("count0");
     card1 = evt;
   }
   if(cardCount == 1){
     matchCards(card1, evt)
   }
-  if(cardCount < 2){
+  // if(cardCount < 2){
+
     flipCard(evt);
     cardCount++;
     setTimeout(function(){
       unFlipCard(evt)
       cardCount--;
       }, FOUND_MATCH_WAIT_MSECS);
-  }
+
 }
 
+const scoreSpan = document.getElementById("score");
 function matchCards(existingCard, newCard){
-  const scoreSpan = document.getElementById("score");
+
   if(existingCard.target.className === newCard.target.className && existingCard.id != newCard.target.id){
     console.log('match')
     match = true;
@@ -114,23 +115,24 @@ function matchCards(existingCard, newCard){
   }
 }
 
+const time = document.getElementById('time')
+
 const resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click', function(e){
   let board = document.querySelector("#game");
-  debugger
   const divs = board.children;
-  debugger
   while (board.hasChildNodes()){
     board.removeChild(board.firstChild);
   }
-  debugger
   let cards = shuffle(COLORS)
   createCards(cards);
+  time.innerText = '0';
+  scoreSpan.innerText = '0';
 })
 
 //** timer */
 
-const time = document.getElementById('time')
+
 let timer = 0;
 setInterval(increaseTimer, 1000)
 function increaseTimer(){
