@@ -84,15 +84,10 @@ let match = false;
 
 function handleCardClick(evt) {
   match = false
-  // console.log("cardCount click "+cardCount);
-  // console.log(evt.target.className);
-  console.log(cardCount)
-  // debugger
   if(cardCount == 0){
     console.log("count0");
     card1 = evt;
   }
-  // debugger
   if(cardCount == 1){
     matchCards(card1, evt)
   }
@@ -114,12 +109,20 @@ function matchCards(existingCard, newCard){
   }
 }
 
-// const resetBtn = document.querySelector('#reset');
-// // resetBtn.addEventListener('click', function(e){
-// //   const gameBoard = document.querySelector("#game");
-// //   const div = gameBoard.children;
-// //   for(let i=0; i<10; i++){
-// //     gameBoard.remove(div);
-// //   }
-// //   createCards(shuffle(COLORS));
-// // })
+const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click', function(e){
+  let board = document.querySelector("#game");
+  debugger
+  const divs = board.children;
+  debugger
+  // for(let i=0; i<10; i++){
+  //   debugger
+  //   board.removeChild();
+  // }
+  while (board.hasChildNodes()){
+    board.removeChild(board.firstChild);
+  }
+  debugger
+  let cards = shuffle(COLORS)
+  createCards(cards);
+})
