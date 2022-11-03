@@ -1,0 +1,47 @@
+/* you can add to or change this. */
+#title {
+  width: 400px;
+  height: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 2px black solid;
+  align-content: center;
+}
+h1 {
+  text-align: center;
+}
+button {
+  margin-right: auto;
+  margin-left: auto;
+}
+#game {
+  margin-right: auto;
+  margin-left: auto;
+  width: 800px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+#game div {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.orange {
+  background-color: orange;
+}
+.green {
+  background-color: green;
+}
+.purple {
+  background-color: purple;
+}
