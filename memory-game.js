@@ -68,13 +68,11 @@ function createCards(colors) {
 
 function flipCard(card) {
   card.target.style.removeProperty('background-color');
-  console.log('flip');
 }
 
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
-  card1 = null;
   if(!match){ //if matchCards() hasn't made match true then cards will flip over.
     card.target.style.backgroundColor='black';
     console.log('unflip');
@@ -88,18 +86,20 @@ function handleCardClick(evt) {
   match = false
   if(cardCount == 0){
     card1 = evt;
-  }
-  if(cardCount == 1){
-    matchCards(card1, evt)
-  }
-  // if(cardCount < 2){
+    cardCount++;
 
+  }
+  if(cardCount == 2){
+    matchCards(card1, evt)
+    setTimeout(function(){
+      unFlipCard(card1)
+      unFlipCard(evt)
+      cardCount = 0
+      }, FOUND_MATCH_WAIT_MSECS);
+  }
+    flipCard(card1)
     flipCard(evt);
     cardCount++;
-    setTimeout(function(){
-      unFlipCard(evt)
-      cardCount--;
-      }, FOUND_MATCH_WAIT_MSECS);
 
 }
 
@@ -140,8 +140,6 @@ function increaseTimer(){
     timer++;
     time.innerText = timer;
   }
-
-
 }
 
 
